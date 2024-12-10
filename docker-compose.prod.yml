@@ -26,8 +26,6 @@ services:
   web:
     build:
       dockerfile: docker/Dockerfile.slim
-    env_file:
-      - .env
     restart: unless-stopped
     ports:
       - "9090:9090"
