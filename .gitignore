@@ -15,7 +15,7 @@ app-data*
 settings.cfg
 tmp
 docker-compose.override.yml
-.env
+.env*
 .flaskenv
 .tox
 .idea
