@@ -25,7 +25,7 @@ services:
       - "8443:443"
   web:
     build:
-      dockerfile: docker/Dockerfile.slim
+      dockerfile: docker/Dockerfile.prod
     restart: unless-stopped
     ports:
       - "9090:9090"
