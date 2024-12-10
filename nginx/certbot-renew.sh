@@ -21,8 +21,8 @@ else
     exit 1
 fi
 
-if ! which $CMD; then echo "ERROR command $CMD not found!"; exit 1; fi
-if ! which $COMPOSE_CMD; then echo "ERROR compose command $COMPOSE_CMD not found!"; exit 1; fi
+if ! which -s $CMD; then echo "ERROR command $CMD not found!"; exit 1; fi
+if ! which -s $COMPOSE_CMD; then echo "ERROR compose command $COMPOSE_CMD not found!"; exit 1; fi
 
 CWD=$(pwd)
 
