@@ -28,11 +28,13 @@ CWD=$(pwd)
 
 cd $OTTERWIKI_CONTEXT
 
-# This requires that port redirection is done on the host from port 80 to port 8080
-$CMD run -it --rm --name certbot -p 8080:80 -v "${OTTERWIKI_VOLUME}:/etc/letsencrypt:rw,Z" certbot/certbot:latest certonly --standalone --non-interactive --agree-tos --email $OTTERWIKI_CERTBOT_EMAIL -d $OTTERWIKI_DOMAIN -v > certbot-renewal.log
+# Commands below may return a non-zero exit code by design
+set +e
 
-# Restart nginx container only if a new certificate has been received
-if grep "Successfully received certificate" certbot-renewal.log; then
+# This requires that port redirection is done on the host from port 80 to port 8080
+$CMD run --rm --name certbot -p 8080:80 -v "${OTTERWIKI_VOLUME}:/etc/letsencrypt:rw,Z" certbot/certbot:latest certonly --standalone --non-interactive --agree-tos --email $OTTERWIKI_CERTBOT_EMAIL -d $OTTERWIKI_DOMAIN -v | grep "Successfully received certificate"
+
+if [ $? -eq 0 ]; then
     $COMPOSE_CMD $COMPOSE_ARG -f docker-compose.prod.yml restart nginx 2>/dev/null || echo "nginx container not running, not restarting it"
 fi
 
