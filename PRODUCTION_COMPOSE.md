@@ -79,7 +79,7 @@ With these in place you can build and start the Compose stack. The
 To build the Otterwiki compose stack do:
 
 ```
-docker compose build -f docker-compose.prod.yml build
+docker compose -f docker-compose.prod.yml build
 ```
 
 # Create the volumes
@@ -87,7 +87,7 @@ docker compose build -f docker-compose.prod.yml build
 After you've built the containers you can bring up the stack to create the volumes:
 
 ```
-docker compose build -f docker-compose.prod.yml up
+docker compose -f docker-compose.prod.yml up
 ```
 
 The stack will *not* come up cleanly as the SSL certificates are missing. In
