@@ -23,6 +23,9 @@ services:
       - static:/app/otterwiki/static:ro,z
     ports:
       - "8443:443"
+    depends_on:
+      web:
+        condition: service_started
   web:
     build:
       dockerfile: docker/Dockerfile.prod
