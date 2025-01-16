@@ -1,0 +1,11 @@
+[Unit]
+Description=Volume for Otterwiki settings and dynamic data
+After=local-fs.target
+
+[Volume]
+Driver=local
+User=otterwiki
+
+[Install]
+WantedBy=multi-user.target default.target
+RequiredBy=otterwiki-web.service

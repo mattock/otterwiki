@@ -1,0 +1,9 @@
+[Unit]
+Description=Otterwiki bridge network
+After=local-fs.target
+
+[Network]
+Driver=bridge
+
+[Install]
+WantedBy=multi-user.target default.target
