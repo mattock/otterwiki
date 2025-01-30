@@ -1,0 +1,14 @@
+[Unit]
+Description=Run postgresql for otterwiki
+After=local-fs.target
+
+[Container]
+ContainerName=db
+Image=docker.io/library/postgres:16.4
+EnvironmentFile=/home/otterwiki/otterwiki/.env.prod.db
+Network=otterwiki.network
+Volume=otterwiki-db.volume:/var/lib/postgresql/data:rw,z
+
+[Install]
+WantedBy=multi-user.target default.target
+RequiredBy=otterwiki-web.service

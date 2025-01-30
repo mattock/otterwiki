@@ -24,6 +24,7 @@ dependencies = [
     "unidiff==0.7.5",
     "beautifulsoup4==4.12.3",
     "pluggy==1.5.0",
+    "psycopg2==2.9.10",
 ]
 keywords = ["wiki", "git", "markdown"]
 classifiers = [

@@ -1,0 +1,10 @@
+[Unit]
+Description=Volume for static Otterwiki data
+After=local-fs.target
+
+[Volume]
+Driver=local
+User=otterwiki
+
+[Install]
+WantedBy=multi-user.target default.target
