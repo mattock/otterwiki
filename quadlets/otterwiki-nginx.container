@@ -1,0 +1,15 @@
+[Unit]
+Description=Run nginx for otterwiki
+After=local-fs.target
+
+[Container]
+ContainerName=nginx
+EnvironmentFile=/home/otterwiki/otterwiki/.env.prod.nginx
+Image=localhost/otterwiki_nginx:latest
+PublishPort=8443:443
+Network=otterwiki.network
+Volume=otterwiki-letsencrypt.volume:/etc/letsencrypt:ro,z
+Volume=otterwiki-static.volume:/app/otterwiki/static:ro,z
+
+[Install]
+WantedBy=multi-user.target default.target

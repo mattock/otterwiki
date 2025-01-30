@@ -1,0 +1,10 @@
+[Unit]
+Description=Volume for Otterwiki Letsencrypt certificates
+After=local-fs.target
+
+[Volume]
+Driver=local
+User=otterwiki
+
+[Install]
+WantedBy=multi-user.target default.target

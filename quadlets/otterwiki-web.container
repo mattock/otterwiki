@@ -1,0 +1,15 @@
+[Unit]
+Description=Run Otterwiki with uwsgi
+After=local-fs.target
+
+[Container]
+ContainerName=web
+Image=localhost/otterwiki_web:latest
+Network=otterwiki.network
+PublishPort=9090:9090
+Volume=otterwiki-app_data.volume:/app-data:rw,z
+Volume=otterwiki-letsencrypt.volume:/etc/letsencrypt:ro,z
+Volume=otterwiki-static.volume:/app/otterwiki/static:rw,z
+
+[Install]
+WantedBy=multi-user.target default.target
